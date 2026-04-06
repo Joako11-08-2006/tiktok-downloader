@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Descargador TikTok</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📥 Descargador de TikTok</h1>
+
+    <form action="/download" method="POST">
+        <input type="text" name="url" placeholder="Pega el link de TikTok" required>
+        <button type="submit">Descargar</button>
+    </form>
+
+</div>
+
+</body>
+</html>

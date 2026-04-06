@@ -1,0 +1,21 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+# Instalar dependencias del sistema
+RUN apk add --no-cache gcc musl-dev linux-headers
+
+# Copiar dependencias primero (mejor cache)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar app
+COPY . .
+
+# Crear usuario seguro
+RUN adduser -D appuser
+USER appuser
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
